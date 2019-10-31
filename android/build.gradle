@@ -1,0 +1,45 @@
+group 'com.avinium.tacotron_tts'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        maven {
+          url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+          url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    dependencies {
+      implementation 'org.pytorch:pytorch_android:1.4.0-SNAPSHOT'
+      implementation 'org.pytorch:pytorch_android_torchvision:1.4.0-SNAPSHOT'
+    }
+}
